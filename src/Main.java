@@ -8,8 +8,7 @@ public class Main {
         System.out.println(urlToString("http://erdani.com/tdpl/hamlet.txt"));
         String lines = urlToString("http://erdani.com/tdpl/hamlet.txt");
         int count = wordCount(lines);
-        System.out.println(count);
-    }
+        System.out.println("The name Hamlet is said " + count + " times!");    }
     /**
      * Retrieve contents from a URL and return them as a string.
      *
@@ -30,15 +29,17 @@ public class Main {
         return contents;
     }
 
-    public static int wordCount(final String contents) {
-        int counter = 1;
-        for (int i = 0; i < contents.length(); i++) {
-            if (contents.charAt(i) == ' ') {
+    public static int wordCount(final String lines) {
+        int counter = 0;
+        String search = " hamlet";
+        for (int i = 0; i < lines.length(); i++) {
+            if (lines.toLowerCase().contains(search)) {
                 counter++;
+            } else {
+                return 0;
             }
         }
         return counter;
-
     }
 
 }
